@@ -1,9 +1,14 @@
 import './App.css';
+import Nav from './Nav';
+import Sidebar from './Sidebar';
 
 function App() {
   return (
     <div className="App">
-      <h1>Working...</h1>
+      <Nav />
+      <Sidebar />
+
+      
       
     </div>
   );
