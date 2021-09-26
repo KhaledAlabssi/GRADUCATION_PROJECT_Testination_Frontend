@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Groups({groups}) {
     return (
         <div className='groups'>
-            <button>Create new group</button>
+            <Link to='/newGroup'><button>Create new group</button></Link>
             {groups.map(i => {
                 console.log(i)
                 return (
