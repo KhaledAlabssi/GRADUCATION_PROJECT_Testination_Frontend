@@ -10,7 +10,7 @@ export default function Sidebar() {
             
             <li>Dashboard</li>
             </ul>
-
         </div>
     )
 }
+ 
