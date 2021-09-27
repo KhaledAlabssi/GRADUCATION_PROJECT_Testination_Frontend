@@ -9,7 +9,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import NewGroup from "./NewGroup";
 import NewTest from "./NewTest";
 import Tests from './Tests'
-import Group from "./Group";
 
 function App() {
   const [groups, setGroups] = useState([]);
@@ -55,9 +54,6 @@ function App() {
           </Route>
           <Route exact path='/newTest'>
             <NewTest />
-          </Route>
-          <Route exact path='/groups/:id'>
-            <Group />
           </Route>
         </Switch>
       </Router>
