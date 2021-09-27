@@ -4,8 +4,9 @@ import axios from 'axios'
 export default function NewGroup() {
     function handleSubmit (e) {
         e.preventDefault();
+        
         axios.post('http://localhost:4000/groups/new', {
-            name: "Khaled 2 Hard Coded name",
+            name: e.target[0].value,
             teacher_id: 1
         })
         

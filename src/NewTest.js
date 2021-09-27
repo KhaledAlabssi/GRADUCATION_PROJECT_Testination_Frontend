@@ -5,7 +5,7 @@ export default function NewTest() {
     function handleSubmit (e) {
         e.preventDefault();
         axios.post('http://localhost:4000/tests/new', {
-            name: "Khaled 2 Hard Coded name",
+            name: e.target[0].value,
             teacher_id: 1
         })
         
