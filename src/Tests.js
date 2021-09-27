@@ -32,12 +32,9 @@ export default function Test({ tests }) {
         </>
       ) : (
         <>
-        {test.map(i => {
-            return (
-                <p>{i.body}</p>
-            )
-        })}
-
+          {test.map((i) => {
+            return <p>{i.body}</p>;
+          })}
         </>
       )}
     </div>

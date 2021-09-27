@@ -38,9 +38,6 @@ export default function Groups({ groups }) {
               <div className='group'>
                 <p>{i.first_name} {i.last_name}</p>
               </div>
-              
-              
-
             )
           })}
           <Link to="/"><button>Back to Main Page</button></Link>
