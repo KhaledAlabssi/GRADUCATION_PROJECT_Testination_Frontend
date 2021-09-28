@@ -19,6 +19,7 @@ function App() {
   const [currentGroup, setCurrentGroup] = useState(null)
   const [currentTest, setCurrentTest] = useState(null)
   const [currentTeacher, setCurrentTeacher] = useState(1)
+
   
 
   useEffect(() => {
@@ -65,7 +66,7 @@ function App() {
             <Main />
           </Route>
           <Route exact path='/newStudent'>
-          <NewStudents /> 
+          <NewStudents groups={groups} /> 
           </Route>   
           <Route exact path='/newQuestion'>
           <NewQuestion /> 
