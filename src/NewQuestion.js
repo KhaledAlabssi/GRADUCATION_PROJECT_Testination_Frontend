@@ -7,6 +7,7 @@ export default function NewQuestion({tests}) {
         axios('http://localhost:4000/students/current')
         .then(response => {
             setCurrentQuestion(response.data[0].id)
+            console.log(response.data)
         })
         .catch(error => {
             console.error('Error fetching data fro currentQuestion from NewQuestion', error)

@@ -5,9 +5,9 @@ import axios from "axios";
 export default function Test({ tests, setCurrentTest }) {
   const [test, setTest] = useState(false);
   async function handleOpen(e) {
-    console.log(e.target.value);
     const v = await axios.get(`http://localhost:4000/tests/${e.target.value}`);
     await setTest(v.data);
+    console.log(v.data)
     setCurrentTest(e.target.value)
   }
   return (
@@ -33,10 +33,13 @@ export default function Test({ tests, setCurrentTest }) {
       ) : (
         <div className='test'>
           {test.map((i) => {
+            console.log(test)
             return <p>{i.body}</p>;
           })}
         </div>
       )}
+      <Link to='newQuestion'><button>Add Questions</button></Link>
+      <Link to="/"><button>Back to Main Page</button></Link>
     </div>
   );
 }
