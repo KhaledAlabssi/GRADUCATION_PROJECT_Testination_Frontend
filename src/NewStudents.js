@@ -16,7 +16,6 @@ export default function NewStudents({groups}) {
     
     function handleSubmit (e) {
         
-        
         e.preventDefault();
         axios.post('http://localhost:4000/students/new', {
             first_name: e.target[0].value,
@@ -25,27 +24,14 @@ export default function NewStudents({groups}) {
             email: e.target[2].value,
             teacher_id: 1,
             password: 123,
-            group: e.target[3].value,
-            student_id: currentStudent + 1
-            
-            
-            
-
         })
         setCurrentStudent(prev => prev += 1)
-        
-
         axios.post('http://localhost:4000/students/toGroup', {
             
             group: e.target[3].value,
-            student_id: currentStudent
-            
-            
+            student_id: currentStudent + 1
 
         })
-
-        
-        
     }
     return (
         <div className='newStudent'>
@@ -57,13 +43,9 @@ export default function NewStudents({groups}) {
                 <label for='group'>Choos a group:</label>
                 <select name='group' id='group'>
                     {groups.map(i => <option value={i.id}>{i.name}</option>)}
-
-
                 </select>
                 <button type='submit'>Add</button>
             </form>
-            
-            
         </div>
     )
 }

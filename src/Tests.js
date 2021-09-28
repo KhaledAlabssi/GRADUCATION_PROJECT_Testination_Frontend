@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-export default function Test({ tests }) {
+export default function Test({ tests, setCurrentTest }) {
   const [test, setTest] = useState(false);
   async function handleOpen(e) {
     console.log(e.target.value);
     const v = await axios.get(`http://localhost:4000/tests/${e.target.value}`);
     await setTest(v.data);
-    console.log(v.data);
+    setCurrentTest(e.target.value)
   }
   return (
     <div className="tests">
@@ -31,11 +31,11 @@ export default function Test({ tests }) {
           })}
         </>
       ) : (
-        <>
+        <div className='test'>
           {test.map((i) => {
             return <p>{i.body}</p>;
           })}
-        </>
+        </div>
       )}
     </div>
   );

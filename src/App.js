@@ -51,7 +51,7 @@ function App() {
             <Groups groups={groups} setCurrentGroup={setCurrentGroup} />
           </Route>
           <Route exact path='/tests'>
-            <Tests tests={tests} />
+            <Tests tests={tests} setCurrentTest={setCurrentTest} />
           </Route>
           <Route exact path='/'>
             <Home />
@@ -69,7 +69,7 @@ function App() {
           <NewStudents groups={groups} /> 
           </Route>   
           <Route exact path='/newQuestion'>
-          <NewQuestion /> 
+          <NewQuestion tests={tests} /> 
           </Route>      
         </Switch>
       </Router>
