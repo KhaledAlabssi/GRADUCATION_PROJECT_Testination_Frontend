@@ -37,7 +37,7 @@ function App() {
       .catch((error) => {
         console.error("Error fetching data for tests: ", error);
       });
-  }, [setGroups, setTests]);
+  }, [setGroups, setTests, setCurrentGroup]);
   return (
     <div className="App">
       <Router>
@@ -47,7 +47,7 @@ function App() {
         
         <Switch>
           <Route exact path='/groups'>
-            <Groups groups={groups} />
+            <Groups groups={groups} setCurrentGroup={setCurrentGroup} />
           </Route>
           <Route exact path='/tests'>
             <Tests tests={tests} />
@@ -56,7 +56,7 @@ function App() {
             <Home />
           </Route>
           <Route exact path='/newGroup'>
-            <NewGroup />
+            <NewGroup setCurrentGroup={setCurrentGroup}/>
           </Route>
           <Route exact path='/newTest'>
             <NewTest />

@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-export default function Groups({ groups }) {
+export default function Groups({ groups, setCurrentGroup }) {
   const [group, setGroup] = useState(false);
-  async function handleEdit(e) {
+  async function handleOpen(e) {
     const v = await axios.get(`http://localhost:4000/groups/${e.target.value}`);
     setGroup(v.data);
-    console.log(v.data[0]);
+    setCurrentGroup(e.target.value)
   }
   return (
     <div className="groups">
@@ -21,8 +21,8 @@ export default function Groups({ groups }) {
             return (
               <>
                 <h3>{i.name}</h3>
-                <button onClick={handleEdit} value={i.id}>
-                  Edit
+                <button onClick={handleOpen} value={i.id}>
+                  Open
                 </button>
                 <button>Assign Test</button>
                 <hr />
@@ -40,6 +40,7 @@ export default function Groups({ groups }) {
               </div>
             )
           })}
+          <Link to='newStudent'><button>Add students</button></Link>
           <Link to="/"><button>Back to Main Page</button></Link>
         </>
       )}

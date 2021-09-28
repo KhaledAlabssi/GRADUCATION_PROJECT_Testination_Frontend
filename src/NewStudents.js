@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react'
 
 export default function NewStudents() {
+    
     function handleSubmit (e) {
         e.preventDefault();
         axios.post('http://localhost:4000/students/new', {
