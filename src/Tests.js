@@ -12,21 +12,29 @@ export default function Test({ tests, setCurrentTest }) {
   }
   return (
     <div className="tests">
+      <Link to="/newTest">
+        <button className='newTest'>Create new Test</button>
+      </Link>
       {test === false ? (
         <>
-          <Link to="/newTest">
-            <button>Create new Test</button>
-          </Link>
+          
           {tests.map((i) => {
             return (
               <>
+              <section className='testBox'>
                 <h3>{i.name}</h3>
+                <div>
                 <button>Assign Test</button>
                 <button onClick={handleOpen} value={i.id}>
                   Open
                 </button>
-                <hr />
+                </div>
+                
+                
+              </section>
+              <hr />
               </>
+              
             );
           })}
         </>
@@ -34,12 +42,13 @@ export default function Test({ tests, setCurrentTest }) {
         <div className='test'>
           {test.map((i) => {
             console.log(test)
-            return <p>{i.body}</p>;
+            return <section className='testBox'><p>{i.body}</p></section>;
           })}
+          
         </div>
       )}
-      <Link to='newQuestion'><button>Add Questions</button></Link>
-      <Link to="/"><button>Back to Main Page</button></Link>
+      <Link to='newQuestion'><button className='tests-button'>Add Questions</button></Link>
+      <Link to="/"><button className='tests-button'>Back to Main Page</button></Link>
     </div>
   );
 }

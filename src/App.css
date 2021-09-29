@@ -10,11 +10,17 @@ https://colorhunt.co/palette/13334c005792f6f6e9fd5f00
 .App {
   background-color: F6F6E9;
   height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
 
 }
 /* Navbar */
 nav {
   height: 20%;
+  
   background-color: #13334C;
   color: #f6f6e9;
   display: flex;
@@ -93,14 +99,27 @@ li {
 
 
 @media (min-width : 576px) {
+  .App {
+    background-color: F6F6E9;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+  
+  }
+
   nav {
     height: 10%;
+    width: 100vw;
     background-color: #13334C;
     color: #f6f6e9;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-  align-items: center;
+    align-items: center;
+  
   }
 
   nav ul {
@@ -115,16 +134,25 @@ li {
   /* sidebar */
 
   .sidebar {
+    position: absolute;
     background-color: #FD5F00;
-    width: 150px;
+    width: 100px;
     height: 90vh;
+    /* padding-top: 20px; */
     display: flex;
     justify-content: center;
+  }
+
+  .sidebar * {
+    margin-top: 20px;
   }
 
   /* home */
 
   .home {
+    /* position: relative;
+    width: 90%; */
+    left: 100px;
     flex-direction: row;
     height: 50%;
     justify-content: space-evenly;
@@ -145,6 +173,8 @@ li {
 
   /* main */
   .main {
+    position: relative;
+    width: 90%;
     flex-direction: row;
     height: 50%;
     justify-content: space-evenly;
@@ -161,6 +191,58 @@ li {
     width: 14rem;
     box-shadow: 2px 4px;
     font-size: 1.5rem;
+  }
+
+  .tests {
+    width: 60vw;
+    min-height: 500px;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    
+
+  }
+  button.newTest {
+    background-color: #FD5F00;
+    font-size: 1.5rem;
+    width: 20rem;
+    height: 3rem;
+    
+    
+  }
+  .testBox {
+    display: flex;
+    height: 3rem;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+  }
+
+  .testBox button {
+    margin: 20px;
+    
+    font-size: 1.2rem;
+    width: 10rem;
+    height: 2rem;
+
+  }
+  .tests-button {
+    font-size: 1.2rem;
+    background-color: #13334C;
+    color: #f6f6e9;
+    outline: none;
+    border: none;
+    width: 15rem;
+    height: 2rem;
+    margin: 10px;
+    box-shadow: 3px 5px;
+    
+
+
+  }
+
+  .test {
+    min-height: 500px;
   }
 
 
