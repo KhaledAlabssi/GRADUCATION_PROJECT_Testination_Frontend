@@ -16,8 +16,8 @@ export default function NewGroup({setCurrentGroup}) {
 
     }
     return (
-        <div className='newGroup'>
-            <h3>New Group From:</h3>
+        <div className='new-group'>
+            <h3>Create New Group:</h3>
             <div>
                 <form onSubmit={handleSubmit}>
                     <input required name='name' type='text' placeholder='Name' />

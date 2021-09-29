@@ -13,11 +13,12 @@ export default function NewTest() {
 
     }
     return (
-        <div className='newtest'>
-            <h3>New Test From:</h3>
+        <div className='new-test'>
+            <h3>Create New Test:</h3>
             <div>
                 <form onSubmit={handleSubmit} >
                     <input required name='name' type='text' placeholder='Name' />
+                    <br />
                     <button type='submit'>Create</button>
                 </form>
             </div>

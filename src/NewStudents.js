@@ -34,16 +34,21 @@ export default function NewStudents({groups}) {
         })
     }
     return (
-        <div className='newStudent'>
+        <div className='new-student'>
             <h3>Add New Student</h3>
             <form onSubmit={handleSubmit}>
                 <input type='text' placeholder='First Name' />
+                
                 <input type='text' placeholder='Last Name' />
+                
                 <input type='email' placeholder='Email' />
-                <label for='group'>Choos a group:</label>
+                
+                
                 <select name='group' id='group'>
                     {groups.map(i => <option value={i.id}>{i.name}</option>)}
+                    
                 </select>
+                
                 <button type='submit'>Add</button>
             </form>
         </div>

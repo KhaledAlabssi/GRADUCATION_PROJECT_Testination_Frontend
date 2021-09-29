@@ -7,43 +7,51 @@ export default function Groups({ groups, setCurrentGroup }) {
   async function handleOpen(e) {
     const v = await axios.get(`http://localhost:4000/groups/${e.target.value}`);
     setGroup(v.data);
-    setCurrentGroup(e.target.value)
+    setCurrentGroup(e.target.value);
   }
   return (
     <div className="groups">
+      <Link to="/newGroup">
+        <button className="groups-button">Create new group</button>
+      </Link>
       {group === false ? (
         <>
-          <Link to="/newGroup">
-            <button>Create new group</button>
-          </Link>
-          {groups.map((i) => {
-            // console.log(i)
-            return (
-              <>
-                <h3>{i.name}</h3>
-                <button onClick={handleOpen} value={i.id}>
-                  Open
-                </button>
-                <button>Assign Test</button>
-                <hr />
-              </>
-            );
-          })}
+          <div className="groups-box">
+            {groups.map((i) => {
+              // console.log(i)
+              return (
+                <div className="group-box">
+                  <h3>{i.name}</h3>
+                  <section>
+                    <button onClick={handleOpen} value={i.id}>
+                      Open
+                    </button>
+                    <button>Assign Test</button>
+                  </section>
+                </div>
+              );
+            })}
+          </div>
         </>
       ) : (
-        <>
+        <div className='group-sec'>
           {group.map((i) => {
-            
             return (
-              <div className='group'>
-                <p>{i.first_name} {i.last_name}</p>
+              <div className="group">
+                <p>
+                  {i.first_name} {i.last_name}
+                </p>
               </div>
-            )
+            );
           })}
-          <Link to='newStudent'><button>Add students</button></Link>
-          <Link to="/"><button>Back to Main Page</button></Link>
-        </>
+        </div>
       )}
+      <Link to="newStudent">
+        <button className="groups-button-blue">Add students</button>
+      </Link>
+      <Link to="/">
+        <button className="groups-button-blue">Back to Main Page</button>
+      </Link>
     </div>
   );
 }
