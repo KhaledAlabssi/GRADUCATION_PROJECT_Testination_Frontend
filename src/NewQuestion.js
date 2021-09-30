@@ -7,10 +7,10 @@ export default function NewQuestion({ tests }) {
   const history = useHistory()
   const [currentQuestion, setCurrentQuestion] = useState(null);
   useEffect(() => {
-    axios("http://localhost:4000/students/current")
+    axios("http://localhost:4000/questions/current")
       .then((response) => {
         setCurrentQuestion(response.data[0].id);
-        console.log(response.data);
+        console.log('yo, yo....', response.data[0].id);
       })
       .catch((error) => {
         console.error(
@@ -42,6 +42,7 @@ export default function NewQuestion({ tests }) {
       question_id: currentQuestion + 1,
       score: e.target[1].value,
     });
+    console.log("hola, hola.......", currentQuestion)
 
     history.push('/tests')
   }

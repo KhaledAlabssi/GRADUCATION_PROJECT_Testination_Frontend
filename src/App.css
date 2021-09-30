@@ -521,6 +521,38 @@ li {
     margin-top: 20px;
   }
 
+  .assignTest  form{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    min-width: 500px;
+
+
+  }
+
+  .assignTest  form > * {
+    height: 2.5rem;
+    font-size: 1rem;
+    margin: 5px;
+    text-align: center;
+    border: none;
+    outline: none;
+
+
+  }
+
+  .assignTest  form select {
+    background-color: #13334C;
+    color: #f6f6e9;
+
+  }
+
+  .assignTest  form button {
+    background-color: #FD5F00;
+    color: #f6f6e9;
+
+  }
+
 
 
 

@@ -15,11 +15,13 @@ export default function AssignTest({groups, tests}) {
     return (
         <div className='assignTest'>
             <form onSubmit={handleSubmit}>
-                <label for='group'>Choose a group</label>
+                <label for='group'><h3>Choose a Group</h3></label>
                 <select name='group' id='group'>
                 {groups.map(i => <option value={i.id}>{i.name}</option>)}
                 </select>
-                <label for='test'>Choose a test</label>
+                <br />
+                <br />
+                <label for='test'><h3>Choose a Test</h3></label>
                 <select name='test' id='test'>
                 {tests.map(i => <option value={i.id}>{i.name}</option>)}
                 </select>

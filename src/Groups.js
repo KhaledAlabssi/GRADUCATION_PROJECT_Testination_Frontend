@@ -26,7 +26,7 @@ export default function Groups({ groups, setCurrentGroup }) {
                     <button onClick={handleOpen} value={i.id}>
                       Open
                     </button>
-                    <button>Assign Test</button>
+                    <Link to='/assignTest'><button>Assign Test</button></Link>
                   </section>
                 </div>
               );

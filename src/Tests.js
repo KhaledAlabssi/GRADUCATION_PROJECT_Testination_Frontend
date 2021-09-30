@@ -24,7 +24,7 @@ export default function Test({ tests, setCurrentTest }) {
               <section className='testBox'>
                 <h3>{i.name}</h3>
                 <div>
-                <button>Assign Test</button>
+                <Link to='/assignTest'><button>Assign Test</button></Link>
                 <button onClick={handleOpen} value={i.id}>
                   Open
                 </button>

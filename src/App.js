@@ -39,7 +39,7 @@ function App() {
       .catch((error) => {
         console.error("Error fetching data for tests: ", error);
       });
-  }, [setGroups, setTests, setCurrentGroup]);
+  }, [setGroups, setTests, setCurrentGroup, setCurrentTest]);
   return (
     <div className="App">
       <Router>
