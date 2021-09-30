@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router";
+
 
 export default function NewQuestion({ tests }) {
+  const history = useHistory()
   const [currentQuestion, setCurrentQuestion] = useState(null);
   useEffect(() => {
     axios("http://localhost:4000/students/current")
@@ -39,6 +42,8 @@ export default function NewQuestion({ tests }) {
       question_id: currentQuestion + 1,
       score: e.target[1].value,
     });
+
+    history.push('/tests')
   }
   return (
     <div className="newQuestion">

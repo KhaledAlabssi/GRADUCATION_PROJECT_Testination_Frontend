@@ -1,7 +1,10 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react'
+import { useHistory } from 'react-router';
+
 
 export default function NewStudents({groups}) {
+    const history = useHistory();
     const [currentStudent, setCurrentStudent] = useState(null)
     useEffect(() => {
         axios("http://localhost:4000/students/current")
@@ -32,23 +35,18 @@ export default function NewStudents({groups}) {
             student_id: currentStudent + 1
 
         })
+        history.push('/groups')
     }
     return (
         <div className='new-student'>
             <h3>Add New Student</h3>
             <form onSubmit={handleSubmit}>
                 <input type='text' placeholder='First Name' />
-                
                 <input type='text' placeholder='Last Name' />
-                
                 <input type='email' placeholder='Email' />
-                
-                
                 <select name='group' id='group'>
-                    {groups.map(i => <option value={i.id}>{i.name}</option>)}
-                    
-                </select>
-                
+                    {groups.map(i => <option value={i.id}>{i.name}</option>)}           
+                </select>       
                 <button type='submit'>Add</button>
             </form>
         </div>
