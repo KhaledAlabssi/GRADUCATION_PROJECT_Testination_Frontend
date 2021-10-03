@@ -553,6 +553,12 @@ li {
 
   }
 
+  .answer-button {
+    width: 200px;
+    height: 2rem;
+    margin: 2px;
+  }
+
 
 
 
