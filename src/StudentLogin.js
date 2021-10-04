@@ -5,6 +5,7 @@ export default function StudentLogin() {
     const [student, setStudent] = useState(null)
     const [groups, setGroups] = useState(null)
     const [availableTests, setAvailableTests] = useState(null)
+    const [ready, setReady] = useState(false)
     function studentLogin(e) {
         e.preventDefault()
         axios.post('http://localhost:4000/student/getStudent', {
@@ -38,6 +39,18 @@ export default function StudentLogin() {
                 <input name='pass' type='password' placeholder='Password' />
                 <button type='submit'>Login</button>
             </form>
+            {availableTests !== null ? (
+                <>
+                {availableTests.map(i => <p>{i.body}</p>)}
+
+                </>
+                
+
+            ):(
+                <>
+                </>
+
+            )}
             
         </div>
         
