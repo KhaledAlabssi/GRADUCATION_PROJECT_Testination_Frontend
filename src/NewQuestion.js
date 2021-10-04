@@ -10,7 +10,6 @@ export default function NewQuestion({ tests }) {
     axios("http://localhost:4000/questions/current")
       .then((response) => {
         setCurrentQuestion(response.data[0].id);
-        console.log('yo, yo....', response.data[0].id);
       })
       .catch((error) => {
         console.error(
@@ -22,27 +21,24 @@ export default function NewQuestion({ tests }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    const n = Number(e.target.correct.value) + 1
+    console.log('here is n: ',n)
     axios.post("http://localhost:4000/questions/new", {
-      body: e.target[0].value,
+      body: e.target.question.value,
+      option_1: e.target.option_1.value,
+      option_2: e.target.option_2.value,
+      option_3: e.target.option_3.value,
+      option_4: e.target.option_4.value,
+      correct: e.target[n].value,
       teacher_id: 1,
-      score: e.target[1].value,
+      score: 1
     });
     setCurrentQuestion((prev) => (prev += 1));
 
     axios.post("http://localhost:4000/questions/toTest", {
-      test_id: e.target[2].value,
+      test_id: e.target.test.value,
       question_id: currentQuestion + 1,
     });
-
-    axios.post("http://localhost:4000/questions/addAnswer", {
-      correct: e.target[3].value,
-      option1: e.target[4].value,
-      option2: e.target[5].value,
-      option3: e.target[6].value,
-      question_id: currentQuestion + 1,
-      score: e.target[1].value,
-    });
-    console.log("hola, hola.......", currentQuestion)
 
     history.push('/tests')
   }
@@ -51,28 +47,32 @@ export default function NewQuestion({ tests }) {
       <form onSubmit={handleSubmit}>
         <h3>New Question</h3>
         <section>
-          <h5>Question:</h5>
-          <input type="text" placeholder="Question" />
-          <br />
-          <input placeholder="1" type="number" min="1" max="10" step="1" />
+          <input type="text" placeholder="Question" name='question'/> 
           <br />
           <select name="test" id="test">
             {tests.map((i) => (
-              <option value={i.id}>{i.name}</option>
+              <option name='test' value={i.id}>Test: {i.name}</option>
             ))}
           </select>
           <br />
         </section>
         <section>
-          <h5>Answer:</h5>
-          <input type="text" placeholder="Correct Answer" />
+          <h5>Answer Options:</h5>
+          
+          <input name='option_1' type="text" placeholder="Option 1" />
           <br />
-          <input type="text" placeholder="Option 1" />
+          <input name='option_2' type="text" placeholder="Option 2" />
           <br />
-          <input type="text" placeholder="Option 2" />
+          <input name='option_3' type="text" placeholder="Option 3" />
           <br />
-          <input type="text" placeholder="Option 3" />
+          <input name='option_4' type="text" placeholder="Option 4" />
           <br />
+          <select name='correct'>
+            <option name='correct' value='1'>Option 1 is the correct answer</option>
+            <option name='correct' value='2'>Option 2 is the correct answer</option>
+            <option name='correct' value='3'>Option 3 is the correct answer</option>
+            <option name='correct' value='4'>Option 4 is the correct answer</option>
+          </select>
         </section>
 
         <button type="submit">Add</button>
