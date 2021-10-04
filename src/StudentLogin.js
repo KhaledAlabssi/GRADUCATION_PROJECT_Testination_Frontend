@@ -11,29 +11,26 @@ export default function StudentLogin() {
             email: e.target.email.value,
             password: e.target.pass.value
 
-
         }).then(response => {
             console.log(response.data[0])
             setStudent(response.data[0])
             axios.post('http://localhost:4000/student/getStudentTest',{
                 student_id: response.data[0].id
             }).then(res => {
-                setGroups(res.data)
-                console.log('Your groups are: ', res.data)
-            })
-            // get the group and then the test: SELECT * from groups JOIN group_has_students on group_has_students.group_id = groups.id where group_has_students.student_id = 56
-        })
+                setGroups(res.data[0].group_id)
+                console.log('Your groups are: ', res.data[0].group_id)
+                axios.post('http://localhost:4000/student/getTest', {
+                    group_id: res.data[0].group_id
 
+                }).then(r => {
+                    console.log('wow', r.data)
+                    setAvailableTests(r.data)
+                })
+            })
+        })
     }
     return (
-    <> 
-    {groups !== null ? (
-        <>
-        </>
-    ) : (
-        <>
-        </>
-    )}
+    
         <div>
             <form onSubmit={studentLogin}>
                 <h2>Login as Student</h2>
@@ -43,6 +40,6 @@ export default function StudentLogin() {
             </form>
             
         </div>
-        </>
+        
     )
 }
