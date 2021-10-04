@@ -49,7 +49,7 @@ export default function Groups({ groups, setCurrentGroup }) {
       <Link to="newStudent">
         <button className="groups-button-blue">Add students</button>
       </Link>
-      <Link to="/">
+      <Link to="/main">
         <button className="groups-button-blue">Back to Main Page</button>
       </Link>
     </div>

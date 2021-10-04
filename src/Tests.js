@@ -48,7 +48,7 @@ export default function Test({ tests, setCurrentTest }) {
         </div>
       )}
       <Link to='newQuestion'><button className='tests-button'>Add Questions</button></Link>
-      <Link to="/"><button className='tests-button'>Back to Main Page</button></Link>
+      <Link to="/main"><button className='tests-button'>Back to Main Page</button></Link>
     </div>
   );
 }

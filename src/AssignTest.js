@@ -1,7 +1,9 @@
 import React from 'react'
 import axios from 'axios'
+import { useHistory } from 'react-router'
 
 export default function AssignTest({groups, tests}) {
+    const history = useHistory()
 
     function handleSubmit (e) {
         e.preventDefault()
@@ -11,6 +13,7 @@ export default function AssignTest({groups, tests}) {
             test_id: e.target[1].value,
             deadline: e.target[2].value
         })
+        history.push('/tests')
     }
     return (
         <div className='assignTest'>

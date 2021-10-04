@@ -1,12 +1,13 @@
 import React from 'react'
 
-export default function Question({currentQuestion, test, nextQuestion, score, result}) {
+export default function Question({test_id, submitTest, currentQuestion, test, nextQuestion, score, result}) {
     return (
         <div>
             {test.length === currentQuestion ? (
                 <>
-                <h3>Result is: {result}</h3>
-                <h3>Score is: {score}</h3>
+                {submitTest()}
+                <h3>Your score is: {result} out of {score}.</h3>
+                
                 </>
 
             ) : (
