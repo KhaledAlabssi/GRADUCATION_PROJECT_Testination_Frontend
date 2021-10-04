@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, {useEffect, useState} from 'react'
 import { useHistory } from 'react-router';
 
-
 export default function NewStudents({groups}) {
     const history = useHistory();
     const [currentStudent, setCurrentStudent] = useState(null)
@@ -18,6 +17,7 @@ export default function NewStudents({groups}) {
     }, [setCurrentStudent])
     
     function handleSubmit (e) {
+        let pass = Math.round(Math.random() * 100000000)
         
         e.preventDefault();
         axios.post('http://localhost:4000/students/new', {
@@ -26,15 +26,36 @@ export default function NewStudents({groups}) {
             username: e.target[1].value + e.target[0].value,
             email: e.target[2].value,
             teacher_id: 1,
-            password: 123,
+            password: pass,
         })
         setCurrentStudent(prev => prev += 1)
         axios.post('http://localhost:4000/students/toGroup', {
             
             group: e.target[3].value,
             student_id: currentStudent + 1
-
         })
+
+        axios.post('http://localhost:4000/email', {
+            username: e.target[1].value + e.target[0].value,
+            password: pass,
+            email: e.target[2].value,
+   
+        })
+            .then(function (response) {
+                console.log(response);
+                if (response.status === 200) {
+                    console.log("all good here...", response.status)
+                    // setEmailStatus("Quote Email Sent Successfully to the client !")
+                } else {
+                    console.log("error", response.status)
+                    // setEmailStatus("Quote Email NOT sent, Please contact your Admin Team !")
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+                // setEmailStatus("Quote Email NOT sent, Please contact your Admin Team !")
+            });
+
         history.push('/groups')
     }
     return (

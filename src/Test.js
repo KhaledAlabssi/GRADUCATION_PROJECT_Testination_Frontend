@@ -21,7 +21,7 @@ export default function Test({ tests }) {
     }
   }
 
-  async function handleSubmit(e) {
+  async function openTest(e) {
     e.preventDefault();
     const questions = await axios.get(
       `http://localhost:4000/test/${e.target[0].value}`
@@ -46,7 +46,7 @@ export default function Test({ tests }) {
   return (
     <div>
       <h3>Choose Your Test</h3>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={openTest}>
         <select>
           {tests.map((i) => {
             return <option value={i.id}>{i.name}</option>;
