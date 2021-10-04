@@ -29,6 +29,11 @@ nav {
   align-items: center;
 
 }
+nav img {
+  height: 120%;
+  position: relative;
+  top: 1rem;
+}
 
 li {
   list-style: none;

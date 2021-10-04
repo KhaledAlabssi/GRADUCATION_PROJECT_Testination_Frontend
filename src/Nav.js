@@ -3,7 +3,7 @@ import React from 'react'
 export default function Nav() {
     return (
         <nav>
-            <h1>LOGO</h1>
+            <img src='https://ik.imagekit.io/kaa/testination/testinatin-logo_xuBNo85tg.jpeg?updatedAt=1633252219363' />
             <ul>
                 <li>About</li>
                 <li>Contact</li>
