@@ -36,7 +36,7 @@ export default function NewStudents({groups}) {
         })
 
         axios.post('http://localhost:4000/email', {
-            username: e.target[1].value + e.target[0].value,
+            email: e.target[2].value,
             password: pass,
             email: e.target[2].value,
    
