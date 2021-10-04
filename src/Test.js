@@ -27,11 +27,8 @@ export default function Test({ tests }) {
       `http://localhost:4000/test/${e.target[0].value}`
     );
     setTest_id(e.target[0].value)
-    
     setTest(questions.data)
     setScore(questions.data.length)
-    
-    
   }
 
   function submitTest() {
