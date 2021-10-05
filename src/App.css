@@ -71,7 +71,7 @@ li {
   background-color: #FD5F00;
   color: #13334C;
   /* outline: none; */
-  box-shadow: 2px 4px;
+  box-shadow: 3px 3px;
   font-size: 1.5rem;
 }
 
@@ -104,7 +104,7 @@ li {
   background-color: #FD5F00;
   color: #13334C;
   /* outline: none; */
-  box-shadow: 2px 4px;
+  box-shadow: 3px 3px;
   font-size: 1.5rem;
 }
 
@@ -181,19 +181,26 @@ li {
     border: none;
     height: 4rem;
     width: 14rem;
-    box-shadow: 2px 4px;
+    box-shadow: 3px 3px;
     font-size: 1.5rem;
   }
 
   /* main */
+  
   .main {
     position: relative;
     width: 90%;
     flex-direction: row;
-    height: 50%;
+    height: 30%;
     justify-content: space-evenly;
     align-items: center;
 
+  }
+
+  .main-img {
+    height: 400px;
+    box-shadow: 3px 3px;
+    color: #13334C;
   }
 
   .main button {
@@ -203,7 +210,7 @@ li {
     border: none;
     height: 4rem;
     width: 14rem;
-    box-shadow: 2px 4px;
+    box-shadow: 3px 3px;
     font-size: 1.5rem;
   }
 
@@ -213,6 +220,7 @@ li {
     padding-top: 80px;
     display: flex;
     flex-direction: column;
+    color: #13334C;
     
 
   }
@@ -251,7 +259,7 @@ li {
     outline: none;
     border: none;
     width: 15rem;
-    height: 2rem;
+    height: 2.3rem;
     margin: 10px;
     box-shadow: 3px 5px;
   }
@@ -416,7 +424,7 @@ li {
 
   .group-box button {
     margin: 20px;
-    background-color: white;
+    background-color: #eee;
     color: #13334C;
     
     font-size: 1.2rem;
@@ -626,6 +634,35 @@ li {
     position: relative;
     top: -20px;
   }
+
+  .result-page {
+    margin-top: 100px;
+    width: 60%;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+
+
+ 
 
 
 

@@ -35,10 +35,11 @@ export default function Groups({ groups, setCurrentGroup }) {
                 <div className="group-box">
                   <h3>{i.name}</h3>
                   <section>
+                  <Link to='/assignTest'><button>Assign Test</button></Link>
                     <button onClick={handleOpen} value={i.id}>
                       Open
                     </button>
-                    <Link to='/assignTest'><button>Assign Test</button></Link>
+                    
                   </section>
                   {/* <hr /> */}
                 </div>

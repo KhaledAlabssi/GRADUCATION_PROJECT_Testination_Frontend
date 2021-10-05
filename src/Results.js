@@ -16,20 +16,35 @@ export default function Results() {
       }, [])
 
     return (
-        <div>
+        <div className='result-page'>
             {results !== null ? (
             <>
+            <table>
+                        <tr>
+                            <th>Studetn First Name</th>
+                            <th>Score</th>
+                            <th>Test</th>
+                        </tr>
             {results.map(i => {
                 return (
-                    <>
-                    <p>Student name: {i.first_name}</p>
-                    <br />
-                    <p>Score: {i.result} out of {i.score}</p>
-                    <br />
-                    <p>Participate in test: {i.name}</p>
-                    </>
+                    // <div className='result'>
+                    // <p>Student name: {i.first_name}</p>
+                    // <br />
+                    // <p>Score: {i.result} out of {i.score}</p>
+                    // <br />
+                    // <p>Participate in test: {i.name}</p>
+                    // </div>
+                    <tr>
+                        <td>{i.first_name}</td>
+                        <td>{i.result} out of {i.score}</td>
+                        <td>{i.name}</td>
+                    </tr>
+                    
+
+                    
                 )
             })}
+            </table>
             </>
             ):(
             <p>Nothing to show for now</p>
