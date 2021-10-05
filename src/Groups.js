@@ -4,11 +4,23 @@ import axios from "axios";
 
 export default function Groups({ groups, setCurrentGroup }) {
   const [group, setGroup] = useState(false);
+  const [updatedGroups, setUpdatedGroups] = useState(groups)
   async function handleOpen(e) {
     const v = await axios.get(`http://localhost:4000/groups/${e.target.value}`);
     setGroup(v.data);
     setCurrentGroup(e.target.value);
   }
+
+  useEffect(() => {
+    console.log('effect groups')
+    axios("http://localhost:4000/groups")
+      .then((response) => {
+        setUpdatedGroups(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data for Groups: ", error);
+      });
+  }, [])
   return (
     <div className="groups">
       <Link to="/newGroup">
@@ -17,7 +29,7 @@ export default function Groups({ groups, setCurrentGroup }) {
       {group === false ? (
         <>
           <div className="groups-box">
-            {groups.map((i) => {
+            {updatedGroups.map((i) => {
               // console.log(i)
               return (
                 <div className="group-box">
@@ -35,7 +47,7 @@ export default function Groups({ groups, setCurrentGroup }) {
         </>
       ) : (
         <div className='group-sec'>
-          {group.map((i) => {
+          {updatedGroups.map((i) => {
             return (
               <div className="group">
                 <p>

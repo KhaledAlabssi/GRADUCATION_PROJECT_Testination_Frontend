@@ -4,12 +4,25 @@ import axios from "axios";
 
 export default function Test({ tests, setCurrentTest }) {
   const [test, setTest] = useState(false);
+  const [updatedTest, setUpdatedTest] = useState(tests)
   async function handleOpen(e) {
     const v = await axios.get(`http://localhost:4000/tests/${e.target.value}`);
     await setTest(v.data);
     console.log(v.data)
     setCurrentTest(e.target.value)
   }
+   useEffect(() => {
+     console.log('effect tests')
+    axios("http://localhost:4000/tests")
+    .then((response) => {
+      setUpdatedTest(response.data);
+    })
+    .catch((error) => {
+      console.error("Error fetching data for tests: ", error);
+    });
+   }, [])
+
+
   return (
     <div className="tests">
       <Link to="/newTest">
@@ -18,7 +31,7 @@ export default function Test({ tests, setCurrentTest }) {
       {test === false ? (
         <>
           
-          {tests.map((i) => {
+          {updatedTest.map((i) => {
             return (
               <>
               <section className='testBox'>
@@ -40,7 +53,7 @@ export default function Test({ tests, setCurrentTest }) {
         </>
       ) : (
         <div className='test'>
-          {test.map((i) => {
+          {updatedTest.map((i) => {
             console.log(test)
             return <section className='testBox'><p>{i.body}</p></section>;
           })}

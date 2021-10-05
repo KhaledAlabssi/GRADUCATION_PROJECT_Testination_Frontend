@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { useHistory} from 'react-router-dom';
 
-export default function NewGroup({setCurrentGroup}) {
+export default function NewGroup({setCurrentGroup, refresh}) {
     const history = useHistory();
     function handleSubmit (e) {
         e.preventDefault();
@@ -11,7 +11,9 @@ export default function NewGroup({setCurrentGroup}) {
             name: e.target[0].value,
             teacher_id: 1
         })
-        history.push('/groups')
+        
+
+        history.push('/main')
     }
     return (
         <div className='new-group'>

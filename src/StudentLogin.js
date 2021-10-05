@@ -80,9 +80,7 @@ export default function StudentLogin() {
           
         <>
         {ready !== true ? (<>
-            {availableTests.map((i) => (
-            <p>{i.body}</p>
-          ))}
+            
           <h3>{availableTests[currentQuestion].body}</h3>
           <button className="answer-button" onClick={nextQuestion}>
             {availableTests[currentQuestion].option_1}

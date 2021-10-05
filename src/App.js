@@ -22,10 +22,12 @@ function App() {
   const [currentGroup, setCurrentGroup] = useState(null)
   const [currentTest, setCurrentTest] = useState(null)
   const [currentTeacher, setCurrentTeacher] = useState(1)
+  const [refreshNeeded, setrefreshNeeded] = useState(0)
 
-  
+ 
 
   useEffect(() => {
+    console.log('uesEffect been called!')
     axios("http://localhost:4000/groups")
       .then((response) => {
         setGroups(response.data);
@@ -60,9 +62,9 @@ function App() {
             <Home />
           </Route>
           <Route exact path='/newGroup'>
-            <NewGroup setCurrentGroup={setCurrentGroup}/>
+            <NewGroup setCurrentGroup={setCurrentGroup} />
           </Route>
-          <Route exact path='/newTest'>
+          <Route exact path='/newTest'  >
             <NewTest />
           </Route>
           <Route exact path='/main'>
