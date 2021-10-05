@@ -69,12 +69,14 @@ export default function StudentLogin() {
   return (
     <div>
         <div className={loged ? 'none' : 'bla'}>
+          <div className='login'>
       <form onSubmit={studentLogin} >
         <h2>Login as Student</h2>
         <input name="email" type="text" placeholder="email" />
         <input name="pass" type="password" placeholder="Password" />
         <button type="submit">Login</button>
       </form>
+      </div>
       </div>
       {availableTests !== null ? (
           
@@ -101,7 +103,7 @@ export default function StudentLogin() {
           
         </>
       ) : (
-        <><p>Login to start your test</p></>
+        <><p></p></>
       )}
     </div>
   );
