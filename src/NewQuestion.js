@@ -6,6 +6,7 @@ import { useHistory } from "react-router";
 export default function NewQuestion({ tests }) {
   const history = useHistory()
   const [currentQuestion, setCurrentQuestion] = useState(null);
+  const [updatedTest, setUpdatedTest] = useState(tests)
   useEffect(() => {
     axios("http://localhost:4000/questions/current")
       .then((response) => {
@@ -17,6 +18,14 @@ export default function NewQuestion({ tests }) {
           error
         );
       });
+
+      axios("http://localhost:4000/tests")
+    .then((response) => {
+      setUpdatedTest(response.data);
+    })
+    .catch((error) => {
+      console.error("Error fetching data for tests: ", error);
+    });
   }, [setCurrentQuestion]);
 
   function handleSubmit(e) {
@@ -50,7 +59,7 @@ export default function NewQuestion({ tests }) {
           <input type="text" placeholder="Question" name='question'/> 
           <br />
           <select name="test" id="test">
-            {tests.map((i) => (
+            {updatedTest.map((i) => (
               <option name='test' value={i.id}>Test: {i.name}</option>
             ))}
           </select>

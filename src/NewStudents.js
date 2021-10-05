@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react'
 import { useHistory } from 'react-router';
 
 export default function NewStudents({groups}) {
+    const [updatedGroups, setUpdatedGroups] = useState(groups)
     const history = useHistory();
     const [currentStudent, setCurrentStudent] = useState(null)
     useEffect(() => {
@@ -13,6 +14,14 @@ export default function NewStudents({groups}) {
       })
       .catch((error) => {
         console.error("Error fetching data for currentStudents from NewStudent.js: ", error);
+      });
+
+      axios("http://localhost:4000/groups")
+      .then((response) => {
+        setUpdatedGroups(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data for Groups: ", error);
       });
     }, [setCurrentStudent])
     
@@ -66,7 +75,7 @@ export default function NewStudents({groups}) {
                 <input type='text' placeholder='Last Name' />
                 <input type='email' placeholder='Email' />
                 <select name='group' id='group'>
-                    {groups.map(i => <option value={i.id}>{i.name}</option>)}           
+                    {updatedGroups.map(i => <option value={i.id}>{i.name}</option>)}           
                 </select>       
                 <button type='submit'>Add</button>
             </form>

@@ -13,7 +13,7 @@ export default function NewGroup({setCurrentGroup, refresh}) {
         })
         
 
-        history.push('/main')
+        history.push('/groups')
     }
     return (
         <div className='new-group'>
