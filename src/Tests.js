@@ -53,7 +53,7 @@ export default function Test({ tests, setCurrentTest }) {
         </>
       ) : (
         <div className='test'>
-          {updatedTest.map((i) => {
+          {test.map((i) => {
             console.log(test)
             return <section className='testBox'><p>{i.body}</p></section>;
           })}

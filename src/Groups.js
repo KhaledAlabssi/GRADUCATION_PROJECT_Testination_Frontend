@@ -47,7 +47,7 @@ export default function Groups({ groups, setCurrentGroup }) {
         </>
       ) : (
         <div className='group-sec'>
-          {updatedGroups.map((i) => {
+          {group.map((i) => {
             return (
               <div className="group">
                 <p>

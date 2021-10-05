@@ -1,9 +1,11 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router'
 
 export default function AssignTest({groups, tests}) {
     const history = useHistory()
+    const [updatedGroups, setUpdatedGroups] = useState(groups)
+    const [updatedTests, setUpdatedTests] = useState(tests)
 
     function handleSubmit (e) {
         e.preventDefault()
@@ -15,18 +17,38 @@ export default function AssignTest({groups, tests}) {
         })
         history.push('/tests')
     }
+
+    useEffect(() => {
+        console.log('effect tests')
+       axios("http://localhost:4000/tests")
+       .then((response) => {
+         setUpdatedTests(response.data);
+       })
+       .catch((error) => {
+         console.error("Error fetching data for tests: ", error);
+       });
+
+       console.log('effect tests')
+       axios("http://localhost:4000/groups")
+       .then((response) => {
+         setUpdatedGroups(response.data);
+       })
+       .catch((error) => {
+         console.error("Error fetching data for tests: ", error);
+       });
+      }, [])
     return (
         <div className='assignTest'>
             <form onSubmit={handleSubmit}>
                 <label for='group'><h3>Choose a Group</h3></label>
                 <select name='group' id='group'>
-                {groups.map(i => <option value={i.id}>{i.name}</option>)}
+                {updatedGroups.map(i => <option value={i.id}>{i.name}</option>)}
                 </select>
                 <br />
                 <br />
                 <label for='test'><h3>Choose a Test</h3></label>
                 <select name='test' id='test'>
-                {tests.map(i => <option value={i.id}>{i.name}</option>)}
+                {updatedTests.map(i => <option value={i.id}>{i.name}</option>)}
                 </select>
                 <input type='date' />
                 {/* <input type='datetime-local' /> */}
