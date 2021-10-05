@@ -17,6 +17,9 @@ https://colorhunt.co/palette/13334c005792f6f6e9fd5f00
   align-items: center;
 
 }
+.none {
+  display: none;
+}
 /* Navbar */
 nav {
   height: 20%;
@@ -112,6 +115,9 @@ li {
     justify-content: start;
     align-items: center;
   
+  }
+  .none {
+    display: none;
   }
 
   nav {

@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState } from "react";
-import Thanks from "./Thanks";
 
 
 export default function StudentLogin() {
@@ -12,6 +11,7 @@ export default function StudentLogin() {
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [test_id, setTest_id] = useState(null);
+  const [loged, setLoged] = useState(false)
 
   function studentLogin(e) {
     e.preventDefault();
@@ -39,6 +39,7 @@ export default function StudentLogin() {
                 setAvailableTests(r.data);
                 setTest_id(r.data[0].test_id);
                 setTotalPoints(r.data.length);
+                setLoged(true)
                 
               });
           });
@@ -47,6 +48,7 @@ export default function StudentLogin() {
   function nextQuestion(e) {
     if (currentQuestion === availableTests.length - 1) {
       console.log("Result is: ", score, "from total: ", totalPoints);
+      setReady(true)
       submitTest()
     } else {
       setCurrentQuestion((prev) => (prev += 1));
@@ -66,21 +68,19 @@ export default function StudentLogin() {
   }
   return (
     <div>
-      <form onSubmit={studentLogin}>
+        <div className={loged ? 'none' : 'bla'}>
+      <form onSubmit={studentLogin} >
         <h2>Login as Student</h2>
         <input name="email" type="text" placeholder="email" />
         <input name="pass" type="password" placeholder="Password" />
         <button type="submit">Login</button>
       </form>
+      </div>
       {availableTests !== null ? (
           
         <>
-        
-
-
-
-
-          {availableTests.map((i) => (
+        {ready !== true ? (<>
+            {availableTests.map((i) => (
             <p>{i.body}</p>
           ))}
           <h3>{availableTests[currentQuestion].body}</h3>
@@ -98,10 +98,12 @@ export default function StudentLogin() {
           <br />
           <button className="answer-button" onClick={nextQuestion}>
             {availableTests[currentQuestion].option_4}
-          </button>
+          </button></>):(<><p>Your score is: {score} out of {totalPoints}</p></>)}
+        
+          
         </>
       ) : (
-        <><p>Login to start your test...</p></>
+        <><p>Login to start your test</p></>
       )}
     </div>
   );
