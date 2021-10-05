@@ -40,6 +40,7 @@ export default function Groups({ groups, setCurrentGroup }) {
                     </button>
                     <Link to='/assignTest'><button>Assign Test</button></Link>
                   </section>
+                  {/* <hr /> */}
                 </div>
               );
             })}

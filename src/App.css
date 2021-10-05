@@ -78,10 +78,11 @@ li {
 /* Groups */
 
 .groups {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  width: 60vw;
+    min-height: 500px;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
 
 }
 .groups h3 {
@@ -369,7 +370,7 @@ li {
     padding-top: 80px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    color: #13334C;
   }
 
   .groups-button {
@@ -408,14 +409,15 @@ li {
     justify-content: space-between;
     align-items: center;
     margin: 5px;
-    background-color: #eee;
+    /* background-color: #eee; */
     padding: 10px;
+    border-bottom: 1px solid #13334C;
   }
 
   .group-box button {
     margin: 20px;
-    background-color: #13334C;
-    color: white;
+    background-color: white;
+    color: #13334C;
     
     font-size: 1.2rem;
     width: 10rem;
