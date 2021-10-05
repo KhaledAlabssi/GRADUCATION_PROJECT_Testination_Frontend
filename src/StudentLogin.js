@@ -80,10 +80,11 @@ export default function StudentLogin() {
       </div>
       {availableTests !== null ? (
           
-        <>
+        <div className='test-student-body'>
         {ready !== true ? (<>
             
-          <h3>{availableTests[currentQuestion].body}</h3>
+          <h3>Question: {availableTests[currentQuestion].body}</h3>
+          <br />
           <button className="answer-button" onClick={nextQuestion}>
             {availableTests[currentQuestion].option_1}
           </button>
@@ -98,10 +99,12 @@ export default function StudentLogin() {
           <br />
           <button className="answer-button" onClick={nextQuestion}>
             {availableTests[currentQuestion].option_4}
-          </button></>):(<><p>Your score is: {score} out of {totalPoints}</p></>)}
+          </button></>):(<><p>Thanks for submitting the test.</p>
+          <br />
+          <p>Your score is: {score} out of {totalPoints}</p></>)}
         
           
-        </>
+        </div>
       ) : (
         <><p></p></>
       )}

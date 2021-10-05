@@ -561,8 +561,6 @@ li {
     text-align: center;
     border: none;
     outline: none;
-
-
   }
 
   .assignTest  form select {
@@ -659,6 +657,37 @@ li {
   tr:nth-child(even) {
     background-color: #dddddd;
   }
+  .test-student-body {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    /* text-align: center; */
+    /* align-items: center; */
+    color: #13334C;
+  }
+
+  .test-student-body > * {
+    border: none;
+  }
+  .test-student-body button {
+    box-shadow: 3px 3px;
+    min-width: 500px;
+    font-size: 1rem;
+    margin: 2px;
+    height: 3rem;
+  }
+  .test-student-body h3 {
+    margin: 5px;
+  }
+
+  .test-student-body p {
+    min-width: 500px;
+    align-self: center;
+  }
+
+  
+
 
 
 
