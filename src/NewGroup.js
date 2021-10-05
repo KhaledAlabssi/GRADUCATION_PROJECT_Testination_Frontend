@@ -24,7 +24,6 @@ export default function NewGroup({setCurrentGroup, refresh}) {
                     <button type='submit'>Create</button>
                 </form>
             </div>
-            
         </div>
     )
 }

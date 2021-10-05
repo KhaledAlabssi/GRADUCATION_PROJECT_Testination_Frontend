@@ -16,6 +16,7 @@ import AssignTest from "./AssignTest";
 import Test from "./Test";
 import StudentLogin from "./StudentLogin";
 import Results from "./Results";
+import TeacherLogin from "./TeacherLogin";
 
 function App() {
   const [groups, setGroups] = useState([]);
@@ -85,6 +86,9 @@ function App() {
           </Route>  
           <Route exact path='/studentLogin'>
             <StudentLogin />  
+          </Route>
+          <Route exact path='/teacherLogin'>
+            <TeacherLogin />  
           </Route>
           <Route exact path='/results'>
             <Results  />  

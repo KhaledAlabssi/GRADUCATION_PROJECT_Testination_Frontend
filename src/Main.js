@@ -7,6 +7,7 @@ export default function Main() {
         <div className='main'>
             <Link to='/tests'><button>Tests</button></Link>
             <Link to='/groups'><button>Groups</button></Link>
+            <Link to='/results'><button>Results</button></Link>
             
         </div>
     )
