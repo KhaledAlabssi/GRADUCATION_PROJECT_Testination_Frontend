@@ -8,7 +8,7 @@ export default function NewQuestion({ tests }) {
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [updatedTest, setUpdatedTest] = useState(tests)
   useEffect(() => {
-    axios("http://localhost:4000/questions/current")
+    axios("https://lxam.herokuapp.com/questions/current")
       .then((response) => {
         setCurrentQuestion(response.data[0].id);
       })
@@ -19,7 +19,7 @@ export default function NewQuestion({ tests }) {
         );
       });
 
-      axios("http://localhost:4000/tests")
+      axios("https://lxam.herokuapp.com/tests")
     .then((response) => {
       setUpdatedTest(response.data);
     })
@@ -32,7 +32,7 @@ export default function NewQuestion({ tests }) {
     e.preventDefault();
     const n = Number(e.target.correct.value) + 1
     console.log('here is n: ',n)
-    axios.post("http://localhost:4000/questions/new", {
+    axios.post("https://lxam.herokuapp.com/questions/new", {
       body: e.target.question.value,
       option_1: e.target.option_1.value,
       option_2: e.target.option_2.value,
@@ -44,7 +44,7 @@ export default function NewQuestion({ tests }) {
     });
     setCurrentQuestion((prev) => (prev += 1));
 
-    axios.post("http://localhost:4000/questions/toTest", {
+    axios.post("https://lxam.herokuapp.com/questions/toTest", {
       test_id: e.target.test.value,
       question_id: currentQuestion + 1,
     });

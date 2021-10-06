@@ -7,7 +7,7 @@ export default function NewStudents({groups}) {
     const history = useHistory();
     const [currentStudent, setCurrentStudent] = useState(null)
     useEffect(() => {
-        axios("http://localhost:4000/students/current")
+        axios("https://lxam.herokuapp.com/students/current")
       .then((response) => {
         setCurrentStudent(response.data[0].id);
         
@@ -16,7 +16,7 @@ export default function NewStudents({groups}) {
         console.error("Error fetching data for currentStudents from NewStudent.js: ", error);
       });
 
-      axios("http://localhost:4000/groups")
+      axios("https://lxam.herokuapp.com/groups")
       .then((response) => {
         setUpdatedGroups(response.data);
       })
@@ -29,7 +29,7 @@ export default function NewStudents({groups}) {
         let pass = Math.round(Math.random() * 100000000)
         
         e.preventDefault();
-        axios.post('http://localhost:4000/students/new', {
+        axios.post('https://lxam.herokuapp.com/students/new', {
             first_name: e.target[0].value,
             last_name: e.target[1].value,
             username: e.target[1].value + e.target[0].value,
@@ -38,13 +38,13 @@ export default function NewStudents({groups}) {
             password: pass,
         })
         setCurrentStudent(prev => prev += 1)
-        axios.post('http://localhost:4000/students/toGroup', {
+        axios.post('https://lxam.herokuapp.com/students/toGroup', {
             
             group: e.target[3].value,
             student_id: currentStudent + 1
         })
 
-        axios.post('http://localhost:4000/email', {
+        axios.post('https://lxam.herokuapp.com/email', {
             email: e.target[2].value,
             password: pass,
             email: e.target[2].value,

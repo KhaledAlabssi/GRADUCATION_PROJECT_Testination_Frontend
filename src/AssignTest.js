@@ -10,7 +10,7 @@ export default function AssignTest({groups, tests}) {
     function handleSubmit (e) {
         e.preventDefault()
         // console.log(e.target[2].value)
-        axios.post('http://localhost:4000/assignments/assignTest', {
+        axios.post('https://lxam.herokuapp.com/assignments/assignTest', {
             group_id: e.target[0].value,
             test_id: e.target[1].value,
             deadline: e.target[2].value
@@ -20,7 +20,7 @@ export default function AssignTest({groups, tests}) {
 
     useEffect(() => {
         console.log('effect tests')
-       axios("http://localhost:4000/tests")
+       axios("https://lxam.herokuapp.com/tests")
        .then((response) => {
          setUpdatedTests(response.data);
        })
@@ -29,7 +29,7 @@ export default function AssignTest({groups, tests}) {
        });
 
        console.log('effect tests')
-       axios("http://localhost:4000/groups")
+       axios("https://lxam.herokuapp.com/groups")
        .then((response) => {
          setUpdatedGroups(response.data);
        })

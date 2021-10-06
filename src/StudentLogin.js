@@ -1,8 +1,8 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 
-export default function StudentLogin() {
+export default function StudentLogin({hoursMinSecs}) {
   const [student, setStudent] = useState(null);
   const [groups, setGroups] = useState(null);
   const [availableTests, setAvailableTests] = useState(null);
@@ -12,11 +12,27 @@ export default function StudentLogin() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [test_id, setTest_id] = useState(null);
   const [loged, setLoged] = useState(false)
+  const {hours = 0, minutes = 9, seconds = 60} = hoursMinSecs
+  const [[hrs, mins, secs], setTime] = useState([hours, minutes, seconds])
+
+  function tick () {
+   
+    if (hrs === 0 && mins === 0 && secs === 0) 
+        reset()
+    else if (mins === 0 && secs === 0) {
+        setTime([hrs - 1, 59, 59]);
+    } else if (secs === 0) {
+        setTime([hrs, mins - 1, 59]);
+    } else {
+        setTime([hrs, mins, secs - 1]);
+    }
+};
+const reset = () => setTime([parseInt(hours), parseInt(minutes), parseInt(seconds)])
 
   function studentLogin(e) {
     e.preventDefault();
     axios
-      .post("http://localhost:4000/student/getStudent", {
+      .post("https://lxam.herokuapp.com/student/getStudent", {
         email: e.target.email.value,
         password: e.target.pass.value,
       })
@@ -24,14 +40,14 @@ export default function StudentLogin() {
         console.log(response.data[0]);
         setStudent(response.data[0]);
         axios
-          .post("http://localhost:4000/student/getStudentTest", {
+          .post("https://lxam.herokuapp.com/student/getStudentTest", {
             student_id: response.data[0].id,
           })
           .then((res) => {
             setGroups(res.data[0].group_id);
             console.log("Your groups are: ", res.data[0].group_id);
             axios
-              .post("http://localhost:4000/student/getTest", {
+              .post("https://lxam.herokuapp.com/student/getTest", {
                 group_id: res.data[0].group_id,
               })
               .then((r) => {
@@ -59,13 +75,19 @@ export default function StudentLogin() {
   }
 
   function submitTest() {
-    axios.post("http://localhost:4000/answers/new", {
+    axios.post("https://lxam.herokuapp.com/answers/new", {
       test_id: test_id,
       student_id: student.id,
       score: totalPoints,
       result: score,
     });
   }
+
+  useEffect(() => {
+    const timerId = setInterval(() => tick(), 1000);
+    return () => clearInterval(timerId);
+    
+  }, [tick])
   return (
     <div>
         <div className={loged ? 'none' : 'bla'}>
@@ -84,6 +106,9 @@ export default function StudentLogin() {
         {ready !== true ? (<>
             
           <h3>Question: {availableTests[currentQuestion].body}</h3>
+          <h3 className='timer'><p>{`${hrs.toString().padStart(2, '0')}:${mins
+            .toString()
+            .padStart(2, '0')}:${secs.toString().padStart(2, '0')}`}</p> </h3>
           <br />
           <button className="answer-button" onClick={nextQuestion}>
             {availableTests[currentQuestion].option_1}

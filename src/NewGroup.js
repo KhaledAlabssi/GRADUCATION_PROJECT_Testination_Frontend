@@ -7,7 +7,7 @@ export default function NewGroup({setCurrentGroup, refresh}) {
     function handleSubmit (e) {
         e.preventDefault();
         
-        axios.post('http://localhost:4000/groups/new', {
+        axios.post('https://lxam.herokuapp.com/groups/new', {
             name: e.target[0].value,
             teacher_id: 1
         })

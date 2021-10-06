@@ -6,7 +6,7 @@ export default function NewTest() {
     const history = useHistory();
     function handleSubmit (e) {
         e.preventDefault();
-        axios.post('http://localhost:4000/tests/new', {
+        axios.post('https://lxam.herokuapp.com/tests/new', {
             name: e.target[0].value,
             teacher_id: 1
         })

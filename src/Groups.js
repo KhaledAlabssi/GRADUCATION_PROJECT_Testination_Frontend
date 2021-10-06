@@ -6,14 +6,14 @@ export default function Groups({ groups, setCurrentGroup }) {
   const [group, setGroup] = useState(false);
   const [updatedGroups, setUpdatedGroups] = useState(groups)
   async function handleOpen(e) {
-    const v = await axios.get(`http://localhost:4000/groups/${e.target.value}`);
+    const v = await axios.get(`https://lxam.herokuapp.com/groups/${e.target.value}`);
     setGroup(v.data);
     setCurrentGroup(e.target.value);
   }
 
   useEffect(() => {
     console.log('effect groups')
-    axios("http://localhost:4000/groups")
+    axios("https://lxam.herokuapp.com/groups")
       .then((response) => {
         setUpdatedGroups(response.data);
       })

@@ -6,7 +6,7 @@ export default function Results() {
 
     useEffect(() => {
         console.log('effect groups')
-        axios("http://localhost:4000/results/allResults")
+        axios("https://lxam.herokuapp.com/results/allResults")
           .then((response) => {
             setResults(response.data);
           })

@@ -24,7 +24,7 @@ export default function Test({ tests }) {
   async function openTest(e) {
     e.preventDefault();
     const questions = await axios.get(
-      `http://localhost:4000/test/${e.target[0].value}`
+      `https://lxam.herokuapp.com/test/${e.target[0].value}`
     );
     setTest_id(e.target[0].value)
     setTest(questions.data)
@@ -32,7 +32,7 @@ export default function Test({ tests }) {
   }
 
   function submitTest() {
-    axios.post('http://localhost:4000/answers/new', {
+    axios.post('https://lxam.herokuapp.com/answers/new', {
       test_id: test_id,
       student_id: 56,
       score: score,

@@ -25,12 +25,13 @@ function App() {
   const [currentTest, setCurrentTest] = useState(null)
   const [currentTeacher, setCurrentTeacher] = useState(1)
   const [refreshNeeded, setrefreshNeeded] = useState(0)
+  const hoursMinSecs = {hours:0, minutes: 9, seconds: 59}
 
  
 
   useEffect(() => {
     console.log('uesEffect been called!')
-    axios("http://localhost:4000/groups")
+    axios("https://lxam.herokuapp.com/groups")
       .then((response) => {
         setGroups(response.data);
       })
@@ -38,7 +39,7 @@ function App() {
         console.error("Error fetching data for Groups: ", error);
       });
 
-      axios("http://localhost:4000/tests")
+      axios("https://lxam.herokuapp.com/tests")
       .then((response) => {
         setTests(response.data);
       })
@@ -85,7 +86,7 @@ function App() {
             <Test tests={tests} />  
           </Route>  
           <Route exact path='/studentLogin'>
-            <StudentLogin />  
+            <StudentLogin hoursMinSecs={hoursMinSecs} />  
           </Route>
           <Route exact path='/teacherLogin'>
             <TeacherLogin />  

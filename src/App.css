@@ -162,6 +162,24 @@ li {
 
   /* home */
 
+  .home-page {
+
+    min-height: 90vh;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+  }
+
+  .home-page img {
+    height: 400px;
+    position: relative;
+    top: -100px;
+    box-shadow: 3px 3px;
+    color: #13334C;
+  }
+
   .home {
     /* position: relative;
     width: 90%; */
@@ -370,6 +388,12 @@ li {
     color: #13334C;
     font-weight: bold;
     width: 400px;
+  }
+
+  .timer {
+    position: relative;
+    right: -130%;
+    color: #FD5F00;
   }
 
   .groups {

@@ -6,14 +6,14 @@ export default function Test({ tests, setCurrentTest }) {
   const [test, setTest] = useState(false);
   const [updatedTest, setUpdatedTest] = useState(tests)
   async function handleOpen(e) {
-    const v = await axios.get(`http://localhost:4000/tests/${e.target.value}`);
+    const v = await axios.get(`https://lxam.herokuapp.com/tests/${e.target.value}`);
     await setTest(v.data);
     console.log(v.data)
     setCurrentTest(e.target.value)
   }
    useEffect(() => {
      console.log('effect tests')
-    axios("http://localhost:4000/tests")
+    axios("https://lxam.herokuapp.com/tests")
     .then((response) => {
       setUpdatedTest(response.data);
     })
