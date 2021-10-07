@@ -70,7 +70,6 @@ const reset = () => setTime([parseInt(hours), parseInt(minutes), parseInt(second
       setCurrentQuestion((prev) => (prev += 1));
       if (e.target.innerHTML === availableTests[currentQuestion].correct) {
         setScore((prev) => (prev += 1));
-        setCurrentQuestion((prev) => (prev += 1));
       }
     }
   }
