@@ -9,8 +9,8 @@ export default function TeacherLogin() {
   function teacherLogin(e) {
     e.preventDefault();
     if (
-      e.target.username.value === "khaled" &&
-      e.target.pass.value === "khaledredi"
+      e.target.username.value === "ReDIMember" &&
+      e.target.pass.value === "ReDISuperUser"
     ) {
       setLogged(true);
       history.push("/main");

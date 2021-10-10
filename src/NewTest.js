@@ -10,7 +10,7 @@ export default function NewTest() {
             name: e.target[0].value,
             teacher_id: 1
         })
-        history.push('/tests')
+        history.push('/main')
     }
     return (
         <div className='new-test'>
